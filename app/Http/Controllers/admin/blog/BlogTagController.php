@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\admin\blog;
 
 use Illuminate\Http\Request;
-use App\Models\blog\BlogTags;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Tags;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -19,12 +19,12 @@ class BlogTagController extends Controller
     {
         $src = $_GET['src'] ?? null;
         if (!empty($src)) {
-            $datatable = BlogTags::where(function ($q) use ($src) {
+            $datatable = Tags::where(function ($q) use ($src) {
                 $q->where('name', 'like', '%' . $src . '%')
                     ->orWhere('name_l', 'like', '%' . $src . '%');
             })->withTrashed()->latest()->paginate(25);
         } else {
-            $datatable = BlogTags::withTrashed()->latest()->paginate(25);
+            $datatable =  Tags::withTrashed()->latest()->paginate(25);
         }
 
         return response()->json([
@@ -37,8 +37,8 @@ class BlogTagController extends Controller
     {
         $id = $request->id != 0 ? $request->id : null;
         return Validator::make($request->all(), [
-            'name'          => 'required|max:250|unique:blog_tags,name,' . $id,
-            'name_l'        => 'nullable|max:250|unique:blog_tags,name_l,' . $id
+            'name'          => 'required|max:250|unique:tags,name,' . $id,
+            'name_l'        => 'nullable|max:250|unique:tags,name_l,' . $id
         ]);
     }
 
@@ -61,12 +61,12 @@ class BlogTagController extends Controller
         try {
             if ($id != 0) {
                 $data['updated_by'] = $user;
-                BlogTags::where('id',$id)->update($data);
+                 Tags::where('id',$id)->update($data);
                 SetLog('Updated tag info. (' . $request->name . ')');
             }
             else{
                 $data['created_by'] = $user;
-                BlogTags::create($data);
+                 Tags::create($data);
                 SetLog('Add a new tag. (' . $request->name . ')');
             }
             DB::commit();
@@ -80,7 +80,7 @@ class BlogTagController extends Controller
     public function block(Request $request)
     {
         $user = Auth::user()->id;
-        $info = BlogTags::find($request->id);
+        $info =  Tags::find($request->id);
         $info->deleted_by   = $user;
 
         DB::beginTransaction();
@@ -99,7 +99,7 @@ class BlogTagController extends Controller
     public function unblock(Request $request)
     {
         $user = Auth::user()->id;
-        $info = BlogTags::withTrashed()->find($request->id);
+        $info =  Tags::withTrashed()->find($request->id);
         $info->updated_by   = $user;
         $info->deleted_by   = null;
 

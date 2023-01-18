@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\admin\blog;
 
+use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use App\Models\blog\BlogCategory;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -21,16 +21,22 @@ class BlogCategoryController extends Controller
     {
         $src = $_GET['src'] ?? null;
         if (!empty($src)) {
-            $datatable = BlogCategory::where(function ($q) use ($src) {
+            $datatable = Category::where(function ($q) use ($src) {
                 $q->where('name', 'like', '%' . $src . '%')
                     ->orWhere('name_l', 'like', '%' . $src . '%');
-            })->with('parent')->withTrashed()->latest()->paginate(25);
+            })->where(function($q){
+                $q->where('type','all')->orWhere('type','blog');
+            })
+            ->with('parent')->withTrashed()->latest()->paginate(25);
         } else {
-            $datatable = BlogCategory::with('parent')->withTrashed()->latest()->paginate(25);
+            $datatable = Category::with('parent')
+            ->where(function($q){
+                $q->where('type','all')->orWhere('type','blog');
+            })->withTrashed()->latest()->paginate(25);
         }
 
         return response()->json([
-            'categories'    =>  BlogCategory::all(),
+            'categories'    =>  Category::all(),
             'page'          =>  $this->translate(),
             'datatable'     =>  $datatable
         ]);
@@ -38,41 +44,59 @@ class BlogCategoryController extends Controller
 
     public function validation(Request $request)
     {
-        $id = $request->id != 0 ? $request->id : null;
         return Validator::make($request->all(), [
-            'parent'        => ($request->parent == 0) ? 'nullable' : 'required|exists:blog_categories,id',
+            'parent'        => ($request->parent == 0) ? 'nullable' : 'required|exists:categories,id',
             'name'          => ['required','max:250',
-                Rule::unique('blog_categories')->where(function ($query) use ($request) {
+                Rule::unique('categories')->where(function ($query) use ($request) {
                     if ($request->parent != 0) {
                         if ($request->id != 0) {
                             $query->where([
                                 ['id','!=', $request->id],
+                                ['type', '=', $request->parent],
                                 ['parent_id', '=', $request->parent],
-                            ]);
-                        } else {
-                            $query->where('parent_id', $request->parent);
+                            ])
+                            ->where(function($q){
+                                $q->where('type','all')->orWhere('type','blog');
+                            });
+                        } 
+                        else {
+                            $query->where('parent_id', $request->parent)
+                            ->where(function($q){
+                                $q->where('type','all')->orWhere('type','blog');
+                            });
                         }
-                    } else {
-                        $query->whereNull('parent_id');
+                    } 
+                    else {
+                        $query->where(function($q){
+                            $q->where('type','all')->orWhere('type','blog');
+                        })
+                        ->whereNull('parent_id');
                     }
                 })],
             'name_l'        => ['nullable','max:250',
-                Rule::unique('blog_categories')->where(function ($query) use ($request) {
+                Rule::unique('categories')->where(function ($query) use ($request) {
                     if ($request->parent != 0) {
                         if ($request->id != 0) {
                             $query->where([
                                 ['id','!=', $request->id],
                                 ['parent_id', '=', $request->parent],
-                            ]);
-                        } else {
-                            $query->where('parent_id', $request->parent);
+                            ])
+                            ->where(function($q){
+                                $q->where('type','all')->orWhere('type','blog');
+                            });
+                        } 
+                        else {
+                            $query->where('parent_id', $request->parent)
+                            ->where(function($q){
+                                $q->where('type','all')->orWhere('type','blog');
+                            });
                         }
                     } else {
-                        $query->whereNull('parent_id');
+                        $query->where(function($q){
+                            $q->where('type','all')->orWhere('type','blog');
+                        })->whereNull('parent_id');
                     }
-                })],
-            /* 'name'          => 'required|max:250|unique:blog_categories,name,' . $id,
-            'name_l'        => 'nullable|max:250|unique:blog_categories,name_l,' . $id */
+                })]
         ]);
     }
 
@@ -89,7 +113,7 @@ class BlogCategoryController extends Controller
         $slug = '';
         $slug_l = '';
         if ($request->parent != 0) {
-            $parentInfo = BlogCategory::where('id',$request->parent)->first();
+            $parentInfo = Category::where('id',$request->parent)->first();
             $slug = $parentInfo->slug.'-';
             if (!empty($parentInfo->slug_l)) {
                 $slug_l = $parentInfo->slug_l.'-';
@@ -104,6 +128,7 @@ class BlogCategoryController extends Controller
         
         $data = [
             'parent_id' =>  $request->parent,
+            'type'      =>  'blog',
             'name'      =>  $request->name,
             'name_l'    =>  $request->name_l ?? null,
             'slug'      =>  $slug,
@@ -114,12 +139,12 @@ class BlogCategoryController extends Controller
         try {
             if ($id != 0) {
                 $data['updated_by'] = $user;
-                BlogCategory::where('id',$id)->update($data);
+                Category::where('id',$id)->update($data);
                 SetLog('Updated blog category info. (' . $request->name . ')');
             }
             else{
                 $data['created_by'] = $user;
-                BlogCategory::create($data);
+                Category::create($data);
                 SetLog('Add a new blog category. (' . $request->name . ')');
             }
             DB::commit();
@@ -133,7 +158,7 @@ class BlogCategoryController extends Controller
     public function block(Request $request)
     {
         $user = Auth::user()->id;
-        $info = BlogCategory::find($request->id);
+        $info = Category::find($request->id);
         $info->deleted_by   = $user;
 
         DB::beginTransaction();
@@ -152,7 +177,7 @@ class BlogCategoryController extends Controller
     public function unblock(Request $request)
     {
         $user = Auth::user()->id;
-        $info = BlogCategory::withTrashed()->find($request->id);
+        $info = Category::withTrashed()->find($request->id);
         $info->updated_by   = $user;
         $info->deleted_by   = null;
 

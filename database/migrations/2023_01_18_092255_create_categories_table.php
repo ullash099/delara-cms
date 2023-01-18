@@ -5,10 +5,11 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBlogCategoriesTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     private $data = [
         [
+            'type'          =>  'all',
             'name'          =>  'uncategorized',
             'name_l'        =>  'শ্রেণী বহির্ভূত',
             'slug'          =>  'uncategorized',
@@ -23,9 +24,10 @@ class CreateBlogCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('blog_categories', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
             
+            $table->enum('type',['all','blog','ecommerce']);
             $table->integer('parent_id')->nullable();
             
             $table->string('name')->collation('utf16_general_ci');
@@ -43,7 +45,7 @@ class CreateBlogCategoriesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-        DB::table('blog_categories')->insert($this->data);
+        DB::table('categories')->insert($this->data);
     }
 
     /**
@@ -53,6 +55,6 @@ class CreateBlogCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_categories');
+        Schema::dropIfExists('categories');
     }
 }
