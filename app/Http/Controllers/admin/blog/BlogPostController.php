@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\admin\blog;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\blog\BlogPost;
-use App\Models\blog\BlogCategory;
 use App\Http\Controllers\Controller;
 
 class BlogPostController extends Controller
@@ -26,7 +26,7 @@ class BlogPostController extends Controller
         }
 
         return response()->json([
-            'categories'    =>  BlogCategory::with('childs'),
+            'categories'    =>  Category::with('childs'),
             'page'          =>  $this->translate(),
             'datatable'     =>  $datatable
         ]);

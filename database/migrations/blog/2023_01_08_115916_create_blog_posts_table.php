@@ -16,7 +16,7 @@ class CreateBlogPostsTable extends Migration
         Schema::create('blog_posts', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('category_id')->nullable()->constrained('blog_categories');
+            $table->foreignId('category_id')->nullable()->constrained('categories');
             $table->enum('visibility',['public','private'])->default('public');
             $table->date('publish_date')->nullable();
             $table->enum('status',['draft','publish'])->default('draft');

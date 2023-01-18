@@ -32,8 +32,14 @@ export default function NewUser(props) {
         await axios.post(SecureApiUrl(`save-user`),form,{headers: Header()})
         .then(function(response){
             let info = response.data
-            
-            if(info.errors){
+            if(info.deny){
+                navigate(-1)
+                setTimeout(() => {
+                    props.onAccessDeny(info.deny)
+                }, 100)
+                return false
+            }
+            else if(info.errors){
                 (info.errors).map((error)=>(
                     ShowToast({ type : 'error', msg  : error })
                 ))

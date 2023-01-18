@@ -89,7 +89,13 @@ export default function Users(props) {
         await axios.get(SecureApiUrl(`get-users?src=`+srcKey),{ headers: Header() })
         .then(function(response){
             let info = response.data
-
+            if(info.deny){
+                navigate(-1)
+                setTimeout(() => {
+                    props.onAccessDeny(info.deny)
+                }, 100)
+                return false
+            }
             setDatatable({
                 ...datatable,
                 infos : info.datatable.data,
@@ -117,7 +123,13 @@ export default function Users(props) {
         await axios.get(url,{ headers: Header() })
         .then(function(response){
             let info = response.data
-            let datatable = info.datatable
+            if(info.deny){
+                navigate(-1)
+                setTimeout(() => {
+                    props.onAccessDeny(info.deny)
+                }, 100)
+                return false
+            }
             setDatatable({
                 ...datatable,
                 infos : info.datatable.data,
@@ -155,8 +167,14 @@ export default function Users(props) {
                 await axios.post(SecureApiUrl(`manually-confirm-user-email`),form,{headers : Header()})
                 .then(function (response) {
                     let info = response.data
-
-                    if(info.errors){
+                    if(info.deny){
+                        navigate(-1)
+                        setTimeout(() => {
+                            props.onAccessDeny(info.deny)
+                        }, 100)
+                        return false
+                    }
+                    else if(info.errors){
                         (info.errors).map((error)=>(
                             ShowToast({ type : 'error', msg  : error })
                         ))
@@ -194,10 +212,16 @@ export default function Users(props) {
                 await axios.post(SecureApiUrl(`block-user`),form,{headers : Header()})
                 .then(function (response) {
                     let info = response.data
-
-                    if(info.errors){
+                    if(info.deny){
+                        navigate(-1)
+                        setTimeout(() => {
+                            props.onAccessDeny(info.deny)
+                        }, 100)
+                        return false
+                    }
+                    else if(info.errors){
                         (info.errors).map((error)=>(
-                          ShowToast({ type : 'error', msg  : error })
+                            ShowToast({ type : 'error', msg  : error })
                         ))
                     }
                     else if(info.success){
@@ -234,7 +258,13 @@ export default function Users(props) {
                 await axios.post(SecureApiUrl(`unblock-user`),form,{headers : Header()})
                 .then(function (response) {
                     let info = response.data
-
+                    if(info.deny){
+                        navigate(-1)
+                        setTimeout(() => {
+                            props.onAccessDeny(info.deny)
+                        }, 100)
+                        return false
+                    }
                     if(info.errors){
                         (info.errors).map((error)=>(
                             ShowToast({ type : 'error', msg  : error })

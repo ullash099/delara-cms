@@ -1247,7 +1247,13 @@ function WebsiteSettings(props) {
               }).then(function (response) {
                 setSavingData(false);
                 var info = response.data;
-                if (info.errors) {
+                if (info.deny) {
+                  navigate(-1);
+                  setTimeout(function () {
+                    props.onAccessDeny(info.deny);
+                  }, 100);
+                  return false;
+                } else if (info.errors) {
                   info.errors.map(function (error) {
                     return (0,_Context__WEBPACK_IMPORTED_MODULE_1__.ShowToast)({
                       type: 'error',

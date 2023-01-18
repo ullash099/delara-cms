@@ -2331,6 +2331,13 @@ function BlogCategories(props) {
                 headers: (0,_Context__WEBPACK_IMPORTED_MODULE_2__.Header)()
               }).then(function (response) {
                 var info = response.data;
+                if (info.deny) {
+                  navigate(-1);
+                  setTimeout(function () {
+                    props.onAccessDeny(info.deny);
+                  }, 100);
+                  return false;
+                }
                 setDatatable(_objectSpread(_objectSpread({}, datatable), {}, {
                   infos: info.datatable.data,
                   paginations: info.datatable.links,
@@ -2372,6 +2379,13 @@ function BlogCategories(props) {
                 headers: (0,_Context__WEBPACK_IMPORTED_MODULE_2__.Header)()
               }).then(function (response) {
                 var info = response.data;
+                if (info.deny) {
+                  navigate(-1);
+                  setTimeout(function () {
+                    props.onAccessDeny(info.deny);
+                  }, 100);
+                  return false;
+                }
                 setDatatable(_objectSpread(_objectSpread({}, datatable), {}, {
                   infos: info.datatable.data,
                   paginations: info.datatable.links,
@@ -2417,7 +2431,13 @@ function BlogCategories(props) {
               }).then(function (response) {
                 setSavingData(false);
                 var info = response.data;
-                if (info.errors) {
+                if (info.deny) {
+                  navigate(-1);
+                  setTimeout(function () {
+                    props.onAccessDeny(info.deny);
+                  }, 100);
+                  return false;
+                } else if (info.errors) {
                   info.errors.map(function (error) {
                     return (0,_Context__WEBPACK_IMPORTED_MODULE_2__.ShowToast)({
                       type: 'error',
@@ -2513,7 +2533,13 @@ function BlogCategories(props) {
                           }).then(function (response) {
                             handleGetStartUpData();
                             var info = response.data;
-                            if (info.errors) {
+                            if (info.deny) {
+                              navigate(-1);
+                              setTimeout(function () {
+                                props.onAccessDeny(info.deny);
+                              }, 100);
+                              return false;
+                            } else if (info.errors) {
                               info.errors.map(function (error) {
                                 return (0,_Context__WEBPACK_IMPORTED_MODULE_2__.ShowToast)({
                                   type: 'error',
@@ -2587,7 +2613,13 @@ function BlogCategories(props) {
                           }).then(function (response) {
                             handleGetStartUpData();
                             var info = response.data;
-                            if (info.errors) {
+                            if (info.deny) {
+                              navigate(-1);
+                              setTimeout(function () {
+                                props.onAccessDeny(info.deny);
+                              }, 100);
+                              return false;
+                            } else if (info.errors) {
                               info.errors.map(function (error) {
                                 return (0,_Context__WEBPACK_IMPORTED_MODULE_2__.ShowToast)({
                                   type: 'error',
