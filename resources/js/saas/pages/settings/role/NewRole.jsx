@@ -163,8 +163,14 @@ export default function NewRole(props) {
         .then(function(response){
             setSavingData(false)
             let info = response.data
-
-            if(info.errors){
+            if(info.deny){
+                navigate(-1)
+                setTimeout(() => {
+                    props.onAccessDeny(info.deny)
+                }, 100)
+                return false
+            }
+            else if(info.errors){
                 (info.errors).map((error)=>(
                     ShowToast({ type : 'error', msg  : error })
                 ))

@@ -30,7 +30,7 @@ export default function BlogPost(props) {
     const handleGetStartUpData = async () => {
         setRefreshingList(true)
 
-        await axios.get(SecureApiUrl(`get-blog-categories`),{headers : Header()})
+        await axios.get(SecureApiUrl(`get-blogs`),{headers : Header()})
         .then(function (response) {
             let info = response.data
 
@@ -83,10 +83,16 @@ export default function BlogPost(props) {
         setSrc(srcKey)
 
         setRefreshingList(true)
-        await axios.get(SecureApiUrl(`get-blog-categories?src=${srcKey}`),{ headers: Header() })
+        await axios.get(SecureApiUrl(`get-blogs?src=${srcKey}`),{ headers: Header() })
         .then(function(response){
             let info = response.data
-
+            if(info.deny){
+                navigate(-1)
+                setTimeout(() => {
+                    props.onAccessDeny(info.deny)
+                }, 100)
+                return false
+            }
             setDatatable({
                 ...datatable,
                 infos : info.datatable.data,

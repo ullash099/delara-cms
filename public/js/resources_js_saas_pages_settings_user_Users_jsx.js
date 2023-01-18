@@ -168,6 +168,13 @@ function Users(props) {
                 headers: (0,_Context__WEBPACK_IMPORTED_MODULE_3__.Header)()
               }).then(function (response) {
                 var info = response.data;
+                if (info.deny) {
+                  navigate(-1);
+                  setTimeout(function () {
+                    props.onAccessDeny(info.deny);
+                  }, 100);
+                  return false;
+                }
                 setDatatable(_objectSpread(_objectSpread({}, datatable), {}, {
                   infos: info.datatable.data,
                   paginations: info.datatable.links,
@@ -209,7 +216,13 @@ function Users(props) {
                 headers: (0,_Context__WEBPACK_IMPORTED_MODULE_3__.Header)()
               }).then(function (response) {
                 var info = response.data;
-                var datatable = info.datatable;
+                if (info.deny) {
+                  navigate(-1);
+                  setTimeout(function () {
+                    props.onAccessDeny(info.deny);
+                  }, 100);
+                  return false;
+                }
                 setDatatable(_objectSpread(_objectSpread({}, datatable), {}, {
                   infos: info.datatable.data,
                   paginations: info.datatable.links,
@@ -270,7 +283,13 @@ function Users(props) {
                             headers: (0,_Context__WEBPACK_IMPORTED_MODULE_3__.Header)()
                           }).then(function (response) {
                             var info = response.data;
-                            if (info.errors) {
+                            if (info.deny) {
+                              navigate(-1);
+                              setTimeout(function () {
+                                props.onAccessDeny(info.deny);
+                              }, 100);
+                              return false;
+                            } else if (info.errors) {
                               info.errors.map(function (error) {
                                 return (0,_Context__WEBPACK_IMPORTED_MODULE_3__.ShowToast)({
                                   type: 'error',
@@ -346,7 +365,13 @@ function Users(props) {
                             headers: (0,_Context__WEBPACK_IMPORTED_MODULE_3__.Header)()
                           }).then(function (response) {
                             var info = response.data;
-                            if (info.errors) {
+                            if (info.deny) {
+                              navigate(-1);
+                              setTimeout(function () {
+                                props.onAccessDeny(info.deny);
+                              }, 100);
+                              return false;
+                            } else if (info.errors) {
                               info.errors.map(function (error) {
                                 return (0,_Context__WEBPACK_IMPORTED_MODULE_3__.ShowToast)({
                                   type: 'error',
@@ -422,6 +447,13 @@ function Users(props) {
                             headers: (0,_Context__WEBPACK_IMPORTED_MODULE_3__.Header)()
                           }).then(function (response) {
                             var info = response.data;
+                            if (info.deny) {
+                              navigate(-1);
+                              setTimeout(function () {
+                                props.onAccessDeny(info.deny);
+                              }, 100);
+                              return false;
+                            }
                             if (info.errors) {
                               info.errors.map(function (error) {
                                 return (0,_Context__WEBPACK_IMPORTED_MODULE_3__.ShowToast)({

@@ -11679,7 +11679,7 @@ function BlogPost(props) {
             case 0:
               setRefreshingList(true);
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().get(SecureApiUrl("get-blog-categories"), {
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get(SecureApiUrl("get-blogs"), {
                 headers: (0,_Context__WEBPACK_IMPORTED_MODULE_2__.Header)()
               }).then(function (response) {
                 var info = response.data;
@@ -11740,10 +11740,17 @@ function BlogPost(props) {
               setSrc(srcKey);
               setRefreshingList(true);
               _context2.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().get(SecureApiUrl("get-blog-categories?src=".concat(srcKey)), {
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get(SecureApiUrl("get-blogs?src=".concat(srcKey)), {
                 headers: (0,_Context__WEBPACK_IMPORTED_MODULE_2__.Header)()
               }).then(function (response) {
                 var info = response.data;
+                if (info.deny) {
+                  navigate(-1);
+                  setTimeout(function () {
+                    props.onAccessDeny(info.deny);
+                  }, 100);
+                  return false;
+                }
                 setDatatable(_objectSpread(_objectSpread({}, datatable), {}, {
                   infos: info.datatable.data,
                   paginations: info.datatable.links,
@@ -12039,6 +12046,13 @@ function BlogTags(props) {
                 headers: (0,_Context__WEBPACK_IMPORTED_MODULE_2__.Header)()
               }).then(function (response) {
                 var info = response.data;
+                if (info.deny) {
+                  navigate(-1);
+                  setTimeout(function () {
+                    props.onAccessDeny(info.deny);
+                  }, 100);
+                  return false;
+                }
                 setDatatable(_objectSpread(_objectSpread({}, datatable), {}, {
                   infos: info.datatable.data,
                   paginations: info.datatable.links,
@@ -12080,6 +12094,13 @@ function BlogTags(props) {
                 headers: (0,_Context__WEBPACK_IMPORTED_MODULE_2__.Header)()
               }).then(function (response) {
                 var info = response.data;
+                if (info.deny) {
+                  navigate(-1);
+                  setTimeout(function () {
+                    props.onAccessDeny(info.deny);
+                  }, 100);
+                  return false;
+                }
                 setDatatable(_objectSpread(_objectSpread({}, datatable), {}, {
                   infos: info.datatable.data,
                   paginations: info.datatable.links,
@@ -12124,7 +12145,13 @@ function BlogTags(props) {
               }).then(function (response) {
                 setSavingData(false);
                 var info = response.data;
-                if (info.errors) {
+                if (info.deny) {
+                  navigate(-1);
+                  setTimeout(function () {
+                    props.onAccessDeny(info.deny);
+                  }, 100);
+                  return false;
+                } else if (info.errors) {
                   info.errors.map(function (error) {
                     return (0,_Context__WEBPACK_IMPORTED_MODULE_2__.ShowToast)({
                       type: 'error',

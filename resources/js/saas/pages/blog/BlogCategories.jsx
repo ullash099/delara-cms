@@ -93,7 +93,13 @@ export default function BlogCategories(props) {
         await axios.get(SecureApiUrl(`get-blog-categories?src=${srcKey}`),{ headers: Header() })
         .then(function(response){
             let info = response.data
-
+            if(info.deny){
+                navigate(-1)
+                setTimeout(() => {
+                    props.onAccessDeny(info.deny)
+                }, 100)
+                return false
+            }
             setDatatable({
                 ...datatable,
                 infos : info.datatable.data,
@@ -121,6 +127,13 @@ export default function BlogCategories(props) {
         await axios.get(url,{ headers: Header() })
         .then(function(response){
             let info = response.data
+            if(info.deny){
+                navigate(-1)
+                setTimeout(() => {
+                    props.onAccessDeny(info.deny)
+                }, 100)
+                return false
+            }
             setDatatable({
                 ...datatable,
                 infos : info.datatable.data,
@@ -152,8 +165,14 @@ export default function BlogCategories(props) {
         .then(function (response) {
             setSavingData(false)
             let info = response.data
-            
-            if(info.errors){
+            if(info.deny){
+                navigate(-1)
+                setTimeout(() => {
+                    props.onAccessDeny(info.deny)
+                }, 100)
+                return false
+            }
+            else if(info.errors){
                 (info.errors).map((error)=>(
                     ShowToast({ type : 'error', msg  : error })
                 ))
@@ -211,8 +230,14 @@ export default function BlogCategories(props) {
                 .then(function (response) {
                     handleGetStartUpData()
                     let info = response.data
-
-                    if(info.errors){
+                    if(info.deny){
+                        navigate(-1)
+                        setTimeout(() => {
+                            props.onAccessDeny(info.deny)
+                        }, 100)
+                        return false
+                    }
+                    else if(info.errors){
                         (info.errors).map((error)=>(
                           ShowToast({ type : 'error', msg  : error })
                         ))
@@ -250,8 +275,14 @@ export default function BlogCategories(props) {
                 .then(function (response) {
                     handleGetStartUpData()
                     let info = response.data
-
-                    if(info.errors){
+                    if(info.deny){
+                        navigate(-1)
+                        setTimeout(() => {
+                            props.onAccessDeny(info.deny)
+                        }, 100)
+                        return false
+                    }
+                    else if(info.errors){
                         (info.errors).map((error)=>(
                             ShowToast({ type : 'error', msg  : error })
                         ))
