@@ -11,6 +11,7 @@ import Topbar from './components/Topbar'
 import BlogPost from './pages/blog/BlogPost'
 import BlogPosts from './pages/blog/BlogPosts'
 import BlogTags from './pages/blog/BlogTags'
+import EcommerceCategories from './pages/e-commerce/EcommerceCategories'
 
 const Notfound = React.lazy(() => import('./pages/Notfound'));
 const Profile = React.lazy(() => import('./pages/profile/Profile'));
@@ -168,6 +169,11 @@ export default function Template(props) {
                                     }/>
                                     <Route exact path={SecureUrl(`blog/new-post`)} element={
                                         <BlogPost translate={translate} lang={lang} onAccessDeny={handleResetMenu.bind(this)}/>
+                                    }/>
+
+                                    {/* e-commerce */}
+                                    <Route exact path={SecureUrl(`ecommerce/e-categories`)} element={
+                                        <EcommerceCategories translate={translate} lang={lang} onAccessDeny={handleResetMenu.bind(this)}/>
                                     }/>
                                     
                                 </Routes>
