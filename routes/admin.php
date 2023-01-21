@@ -52,4 +52,6 @@ Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'),
     Route::post('block-blog', 'admin\blog\BlogPostController@block')->middleware('permission:3|800|803,api');
     Route::post('unblock-blog', 'admin\blog\BlogPostController@unblock')->middleware('permission:3|800|803,api');
     
+    #ecommerce
+    Route::get('get-ecommerce-categories','admin\ecommerce\EcommerceCategoryController@index')->middleware('permission:700|701,api');
 });
