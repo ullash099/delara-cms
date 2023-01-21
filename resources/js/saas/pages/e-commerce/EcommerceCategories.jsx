@@ -3,6 +3,8 @@ import React from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { Header, SecureApiUrl } from '../../../Context'
+import AppInput from '../../../forms/AppInput'
+import AppSelect from '../../../forms/AppSelect'
 
 export default function EcommerceCategories(props) {
     const navigate =  useNavigate()
@@ -40,6 +42,21 @@ export default function EcommerceCategories(props) {
                     <Col sm={{ span: 12, order : 2 }} md={{ span: 4, order: 2 }}>
                         <Card>
                             <Card.Header className='outline-primary'>{page.form_card_title}</Card.Header>
+                            <Card.Body className='pt-1'>
+                                {/* <AppSelect controlId="parent" isClearable={true}
+                                    label={page.lbl_parent}
+                                /> */}
+
+                                <AppInput  controlId ="name"
+                                    label={page.lbl_name} isRequired={true}
+                                />
+
+                                {props.translate == 1 ? (
+                                    <AppInput controlId ="name_l"
+                                        label={page.lbl_name_l}
+                                    />
+                                ):(``)}
+                            </Card.Body>
                         </Card>
                     </Col>
                  ):(``)}

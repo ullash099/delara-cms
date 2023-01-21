@@ -21,8 +21,13 @@ class EcommerceCategoryController extends Controller
     public function translate()
     {
         $data = [
-            'list_card_title'       => __('msg.list_category'),
-            'form_card_title'       => __('msg.category').__('msg.information'),
+            'list_card_title'           => __('msg.list_category'),
+            'form_card_title'           => __('msg.category').__('msg.information'),
+        
+            'lbl_parent'                =>  __('msg.parent_category'),
+            'lbl_name'                  =>  __('msg.name'),
+            'lbl_name_l'                =>  __('msg.name_l'),
+
         ];
         return array_merge($this->get_permissions(),$data);
     }
