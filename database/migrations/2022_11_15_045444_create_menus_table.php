@@ -75,6 +75,30 @@ return new class extends Migration
             'app_icon'  =>  '',
         ],
 
+        #ecommerce
+        [
+            'id'        => 700,
+            'parent'    => null,
+            'type'      => 'admin',
+            'name'      => 'E-commerce',
+            'name_l'    => 'ই-কমার্স',
+            'web'       => 'ecommerce',
+            'app'       => '',
+            'web_icon'  => 'uil-file-blank',
+            'app_icon'  => ''
+        ],
+        [
+            'id'        => 701,
+            'parent'    => 700,
+            'type'      => 'admin',
+            'name'      => 'Category',
+            'name_l'    => 'ক্যাটাগরি',
+            'web'       => 'e-categories',
+            'app'       => '',
+            'web_icon'  => '',
+            'app_icon'  => ''
+        ],
+
         #blog
         [
             'id'        =>  800,
