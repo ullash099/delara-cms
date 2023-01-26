@@ -7,15 +7,19 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts -->
+        {{-- Fonts --}}
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         {{-- saas --}}
         <link href="{{ asset('saas/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('saas/toastr/toastr.css') }}" rel="stylesheet"/>
+
         {{-- Styles --}}
         <link rel="stylesheet" href="{{ asset('saas/css/app.min.css') }}">
 
-
+        {{-- Scripts --}}
+        <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/app.js?v='.time()) }}" defer></script>
     </head>
     <body class="show" data-layout-color="light" data-layout-mode="fluid" data-rightbar-onstart="true" data-leftbar-theme="dark">
 
@@ -26,8 +30,12 @@
                 <p style="font-size: 1.5rem;">Please enable JavaScript and refresh the page.</p>
             </div>
         </noscript>
-        @livewire('navigation-menu')
+        @livewire('topbar')
+        @livewire('sidebar')
         @yield('content')
+
+
+
         <div id="app" data-page="{{ (isset($status) ? $status : '' ) }}"></div>
         <script src="{{ asset('js/saas.js') }}"></script>
     </body>
