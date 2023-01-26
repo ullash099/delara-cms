@@ -1,4 +1,6 @@
 <?php
+
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified']], function () {
-    Route::get('user/get-token', 'profile\UserProfileController@token');
-    Route::get('user/get-info', 'profile\UserProfileController@index');
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
 });
