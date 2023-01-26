@@ -13,20 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('login', 'AuthenticatedSessionController@create');
-Route::post('login', 'AuthenticatedSessionController@store')->name('login');
-Route::post('logout', 'AuthenticatedSessionController@destroy');
-Route::get('forgot-password', 'AuthenticatedSessionController@forgotPassword')->name('password.request');
-Route::get('/email/verify/{id}/{hash}', 'VerifyEmailController@__invoke')->middleware(['signed', 'throttle:6,1'])->name('verification.verify');
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('change-lang', 'ChangeLangController@index');
-
-Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified','web']], function () {
-    Route::get('secure/{menu}/{submenu?}/{id?}', 'WebsiteController@admin')->name('admin.template');
-    Route::get('{menu}/{submenu?}/{id?}', 'WebsiteController@index')->name('web.template');
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 });

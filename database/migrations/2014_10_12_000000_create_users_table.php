@@ -4,10 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBasicSettingsTable extends Migration
+return new class extends Migration
 {
-    private $data = [
-    ];
     /**
      * Run the migrations.
      *
@@ -15,15 +13,15 @@ class CreateBasicSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('basic_settings', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
-
             $table->string('name');
-            $table->text('val')->collation('utf16_general_ci');
-
-            $table->foreignId('created_by')->constrained('users');
-            $table->foreignId('updated_by')->nullable()->constrained('users');
-
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->foreignId('current_team_id')->nullable();
+            $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
     }
@@ -35,6 +33,6 @@ class CreateBasicSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('basic_settings');
+        Schema::dropIfExists('users');
     }
-}
+};
