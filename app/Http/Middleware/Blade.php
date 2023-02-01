@@ -26,6 +26,7 @@ class Blade
                 if (in_array(Auth::user()->role_id,[1,2])) {
                     return redirect(RouteServiceProvider::HOME);
                 }
+                
                 $menus = Menu::whereNull('parent')
                 ->where('type','admin')
                 ->with('childs')->get();

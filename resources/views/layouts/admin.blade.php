@@ -12,14 +12,14 @@
 
         {{-- saas --}}
         <link href="{{ asset('saas/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('saas/toastr/toastr.css') }}" rel="stylesheet"/>
+        {{-- <link href="{{ asset('saas/toastr/toastr.css') }}" rel="stylesheet"/> --}}
 
         {{-- Styles --}}
         <link rel="stylesheet" href="{{ asset('saas/css/app.min.css') }}">
 
         {{-- Scripts --}}
         <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
-        <script src="{{ asset('js/app.js?v='.time()) }}" defer></script>
+        @yield('react')
     </head>
     <body class="show" data-layout-color="light" data-layout-mode="fluid" data-rightbar-onstart="true" data-leftbar-theme="dark">
 
@@ -30,13 +30,23 @@
                 <p style="font-size: 1.5rem;">Please enable JavaScript and refresh the page.</p>
             </div>
         </noscript>
-        @livewire('topbar')
-        @livewire('sidebar')
-        @yield('content')
 
+        <div class="wrapper">
+            {{-- @livewire('sidebar') --}}
 
+            <div class="content-page">
+                <div class="content">
+                    @livewire('topbar')
 
-        <div id="app" data-page="{{ (isset($status) ? $status : '' ) }}"></div>
-        <script src="{{ asset('js/saas.js') }}"></script>
+                    {{-- Start Content --}}
+                    <div class="container-fluid">
+                        <div id="app"></div>
+                        {{-- @yield('content') --}}
+                    </div>
+                </div>
+            </div>
+        </div>        
+        <script src="{{ asset('saas/js/app.min.js') }}"></script>
+        <script src="{{ asset('saas/js/vendor.min.js') }}"></script>
     </body>
 </html>
