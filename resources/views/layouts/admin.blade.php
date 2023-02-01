@@ -32,7 +32,7 @@
         </noscript>
 
         <div class="wrapper">
-            {{-- @livewire('sidebar') --}}
+            @livewire('sidebar')
 
             <div class="content-page">
                 <div class="content">
