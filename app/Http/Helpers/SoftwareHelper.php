@@ -28,4 +28,24 @@ if (!function_exists('ConvertToLang')) {
         }
     }
 }
+
+if (!function_exists('DebugMe')) {
+    function DebugMe($value, $die = 0)
+    {
+        echo '<pre>';
+        if (is_array($value)) {
+            print_r($value);
+        } elseif (is_object($value)) {
+            print_r($value);
+        } else {
+            echo $value;
+        }
+        echo '</pre>';
+        if ($die != 0) {
+            die();
+        }
+    }
+}
+
+
 ?>

@@ -9,10 +9,11 @@ class Menu extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'parent','type',
+        'parent','is_caption',
+        'type',
         'name','name_l',
-        'web','web_icon',
-        'app','app_icon'
+        'route_name','web_icon',
+        'app_url','app_icon'
     ];
 
     public function parent()
