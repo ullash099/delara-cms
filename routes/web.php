@@ -16,12 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('change-lang/{lang}', 'ChangeLangController@index')->name('change.lang');
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified','Blade'
 ])->group(function () {
+    
+
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
