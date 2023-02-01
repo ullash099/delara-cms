@@ -23,13 +23,27 @@ class Blade
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                if (in_array(Auth::user()->role_id,[1,2])) {
+                $user = Auth::user();
+                if (in_array($user->role_id,[1,2])) {
                     return redirect(RouteServiceProvider::HOME);
                 }
+
+                $permissions = json_decode($user->role->permissions);
+                
+                $whereNotIn = [1,2,3,4,5,6];
+                $whereIn = array_diff($permissions,$whereNotIn);
                 
                 $menus = Menu::whereNull('parent')
-                ->where('type','admin')
+                ->where(function ($q) use ($whereNotIn,$whereIn)
+                {
+                    $q->where([
+                        ['type','=','admin']
+                    ])
+                    ->whereIn('id',$whereIn)
+                    ->whereNotIn('id',$whereNotIn);
+                })
                 ->with('childs')->get();
+                
                 view()->share('menus', $menus);
             }
         }
