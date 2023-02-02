@@ -1,7 +1,7 @@
 <div class="leftside-menu menuitem-active">
 
     {{-- Brand Logo Light --}}
-    <a href="{{ route('dashboard') }}" class="logo logo-light ms-1">
+    <a href="{{ route('dashboard') }}" class="logo logo-light text-center">
         <span class="logo-lg">
             <img src="{{ asset('images/logo.png') }}" style="width: 250px;" alt="logo">
         </span>

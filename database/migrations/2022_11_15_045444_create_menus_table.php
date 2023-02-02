@@ -100,7 +100,7 @@ return new class extends Migration
             'is_caption'=>  false,
             'type'      => 'admin',
             'name'      => 'Tag',
-            'name_l'    => '',
+            'name_l'    => 'ট্যাগ',
             'route_name'=> 'tags',
             'app_url'   => '',
             'web_icon'  => '',

@@ -52,7 +52,7 @@ $user = Auth::user();
                 <i class="dripicons-bell noti-icon"></i>
                 <span class="noti-icon-badge"></span>
             </a>
-            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg">
+            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated notification-dropdown-lg">
 
                 
                 <div class="dropdown-item noti-title px-3">
@@ -89,7 +89,7 @@ $user = Auth::user();
                                 <h5 class="noti-item-title fw-semibold font-14 m-0">
                                     Order No. #999999999999
                                     {{-- {title} --}}
-                                    <small class="fw-normal text-muted ms-1">1 min ago</small>
+                                    <small class="fw-normal text-muted ms-1 float-end">1 min ago</small>
                                 </h5>
                                 <small class="noti-item-subtitle text-muted">
                                     Updated by masud. 
@@ -115,7 +115,7 @@ $user = Auth::user();
                                 <h5 class="noti-item-title fw-semibold font-14 m-0">
                                     Order No. #999999999999
                                     {{-- {title} --}}
-                                    <small class="fw-normal text-muted ms-1">1 min ago</small>
+                                    <small class="fw-normal text-muted ms-1 float-end">1 min ago</small>
                                 </h5>
                                 <small class="noti-item-subtitle text-muted">
                                     Updated by masud. 
@@ -138,42 +138,42 @@ $user = Auth::user();
             <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                 <i class="dripicons-view-apps noti-icon"></i>
             </a>
-            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg p-0">
+            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated social-link-dropdown-lg p-0">
 
                 <div class="p-2">
                     <div class="row">
                         <div class="col">
-                            <a class="dropdown-icon-item" href="#dynamin-url">
+                            <a class="dropdown-icon-item" href="#dynamin-url" style="border: 1px solid #d1cce4;">
                                 <img src="{{ asset('images/brands/facebook.png') }}" alt="slack">
                                 <span>Facebook</span>
                             </a>
                         </div>
                         <div class="col">
-                            <a class="dropdown-icon-item" href="#dynamin-url">
+                            <a class="dropdown-icon-item" href="#dynamin-url" style="border: 1px solid #d8c1cd;">
                                 <img src="{{ asset('images/brands/instagram.png') }}" alt="slack">
                                 <span>Instagram</span>
                             </a>
                         </div>
                         <div class="col">
-                            <a class="dropdown-icon-item" href="#dynamin-url">
+                            <a class="dropdown-icon-item" href="#dynamin-url" style="border: 1px solid #dac7c7;">
                                 <img src="{{ asset('images/brands/youtube.png') }}" alt="slack">
                                 <span>Youtube</span>
                             </a>
                         </div>
-                        <div class="col">
-                            <a class="dropdown-icon-item" href="#dynamin-url">
+                        <div class="col mt-2">
+                            <a class="dropdown-icon-item" href="#dynamin-url" style="border: 1px solid #c3d8d6;">
                                 <img src="{{ asset('images/brands/twitter.png') }}" alt="slack">
                                 <span>Twitter</span>
                             </a>
                         </div>
-                        <div class="col">
-                            <a class="dropdown-icon-item" href="#dynamin-url">
+                        <div class="col mt-2">
+                            <a class="dropdown-icon-item" href="#dynamin-url"  style="border: 1px solid #c3c5df;">
                                 <img src="{{ asset('images/brands/linkedin.png') }}" alt="slack">
                                 <span>Linkedin</span>
                             </a>
                         </div>
-                        <div class="col">
-                            <a class="dropdown-icon-item" href="https://web.whatsapp.com/">
+                        <div class="col mt-2">
+                            <a class="dropdown-icon-item" href="https://web.whatsapp.com/"  style="border: 1px solid #cce4d2;">
                                 <img src="{{ asset('images/brands/whatsapp.png') }}" alt="slack">
                                 <span>Whatsapp</span>
                             </a>
@@ -197,7 +197,7 @@ $user = Auth::user();
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
                 <div class=" dropdown-header noti-title">
-                    <h6 class="text-overflow m-0">Welcome !</h6>
+                    <h6 class="text-overflow m-0 text-center text-uppercase font-weight-bold" style="font-size: 13px">Welcome !</h6>
                 </div>
 
                 <a href="{{ route('profile.show') }}" class="dropdown-item notify-item">
@@ -236,7 +236,7 @@ $user = Auth::user();
             </div>
         </form>
 
-        <div class="dropdown-menu dropdown-menu-animated dropdown-lg" id="search-dropdown">
+        <div class="dropdown-menu dropdown-menu-animated search-dropdown-lg" id="search-dropdown">
             <!-- item-->
             <div class="dropdown-header noti-title">
                 <h5 class="text-overflow mb-2">Found <span class="text-danger">17</span> results</h5>
