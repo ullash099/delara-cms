@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 
 Route::get('change-lang/{lang}', 'ChangeLangController@index')->name('change.lang');
+Route::post('login', 'AuthenticatedSessionController@store')->name('login');
 Route::post('logout', 'AuthenticatedSessionController@destroy')->name('logout');
 
 
