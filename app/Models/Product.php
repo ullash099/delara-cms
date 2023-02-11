@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use App\Models\Color;
+use App\Models\Tag;
 #use App\Models\Model;
+use App\Models\Color;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -34,5 +35,10 @@ class Product extends Model
     {
         return $this->belongsToMany(Brand::class);
     }
-    
+
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class,'taggable');
+    }
+
 }
