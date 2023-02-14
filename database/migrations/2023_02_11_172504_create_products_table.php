@@ -28,6 +28,15 @@ class CreateProductsTable extends Migration
             $table->integer('sku')->unique();
             $table->float('price',12,4);
             $table->float('selling_price',12,4);
+
+            $table->foreignId('category_id')->constrained('categories');
+            $table->foreignId('brand_id')->constrained('brands');
+            $table->foreignId('color_id')->constrained('colors');
+            $table->foreignId('prodact_model_id')->constrained('product_models');
+            $table->foreignId('tag_id')->constrained('tags');
+            $table->foreignId('size_id')->constrained('sizes');
+
+
             $table->foreignId('created_by')->constrained('users');
             $table->foreignId('updated_by')->nullable()->constrained('users');
             $table->foreignId('deleted_by')->nullable()->constrained('users');

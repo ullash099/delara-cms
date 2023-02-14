@@ -9,9 +9,26 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Color extends Model
 {
     use HasFactory;
+    protected $dates = ['deleted_at'];
+    protected $fillable = ['name','name_l','created_by','updated_by','deleted_by'];
 
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+    
+    public function created_by()
+    {
+        return $this->belongsTo(User::class,'created_by');
+    }
+    
+    public function updated_by()
+    {
+        return $this->belongsTo(User::class,'updated_by');
+    }
+    
+    public function deleted_by()
+    {
+        return $this->belongsTo(User::class,'deleted_by');
     }
 }
