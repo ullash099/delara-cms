@@ -7,12 +7,29 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+        {{-- Google Font  --}}
+        <link rel="preconnect" href="https://fonts.googleapis.com/">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Poppins:wght@400;500;700&amp;display=swap">
+
+        {{-- Plugins CSS --}}
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/font-awesome/css/all.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}">
+
+        {{-- Theme CSS --}}
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
     </head>
-    <body>
-        <div class="font-sans text-gray-900 antialiased">
-            {{ $slot }}
+    <body class="has-navbar-mobile">
+        <div class="mb-2">
+            @livewire('topbar')
         </div>
+
+        @yield('content')
+        
+        @livewire('footer')
+    <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}} "></script>
+
+    <!-- ThemeFunctions -->
+    <script src=" {{ asset('assets/js/functions.js')}} "></script>
     </body>
 </html>
