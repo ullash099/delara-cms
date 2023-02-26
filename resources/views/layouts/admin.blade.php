@@ -46,7 +46,22 @@
                 </div>
             </div>
         </div>        
-        <script src="{{ asset('saas/js/app.min.js') }}"></script>
         <script src="{{ asset('saas/js/vendor.min.js') }}"></script>
+        <script src="{{ asset('saas/js/app.min.js') }}"></script>
+    
+        <script>
+            const openLeft = $('#open_left');
+            const topSearch = $('#top-search');
+            const searchDropdown = $('#search-dropdown');
+
+            $(document).ready(function () {
+                openLeft.on('click',function () {
+                    setTimeout(() => {
+                        let srcwidth = topSearch.css('width');
+                        searchDropdown.attr('style',`width:${srcwidth}`)
+                    }, 200);
+                })
+            })
+        </script>
     </body>
 </html>

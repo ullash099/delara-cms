@@ -223,7 +223,7 @@ $user = Auth::user();
         </li>
 
     </ul>
-    <button class="button-menu-mobile open-left">
+    <button class="button-menu-mobile open-left" id="open_left">
         <i class="mdi mdi-menu"></i>
     </button>
     <div class="app-search dropdown d-none d-lg-block">
