@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'guest\WelcomeController@index')->name('home');
 
 
 Route::get('change-lang/{lang}', 'ChangeLangController@index')->name('change.lang');
