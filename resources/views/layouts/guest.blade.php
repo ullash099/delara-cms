@@ -17,6 +17,8 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}">
 
         {{-- Theme CSS --}}
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/choices/css/choices.min.css') }}">
+	    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/flatpickr/css/flatpickr.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
     </head>
     <body class="has-navbar-mobile">
@@ -30,6 +32,9 @@
     <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}} "></script>
 
     <!-- ThemeFunctions -->
+    <script src=" {{ asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}} "></script>
+    <script src=" {{ asset('assets/vendor/choices/js/choices.min.js')}} "></script>
+    <script src=" {{ asset('assets/vendor/flatpickr/js/flatpickr.min.js')}} "></script>
     <script src=" {{ asset('assets/js/functions.js')}} "></script>
     </body>
 </html>
