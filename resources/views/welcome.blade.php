@@ -1,25 +1,22 @@
 @extends('layouts.guest')
 @section('content')
 <main>
-
-    <!-- =======================
-    Main banner START -->
     <section class="pt-0">
-        <!-- Background and title -->
+        {{-- Background and title --}}
         <div class="container-fluid" style="background-image:url({{ asset('images/bg/01.jpg') }}); background-position: center left; background-size: cover;">
             <div class="row">
-                <!-- Title -->
+                {{-- Title --}}
                 <div class="col-md-6 mx-auto text-center pt-7 pb-9">
                     <h1 class="text-white">Hotel, cab, flight & tour experience</h1>
                     <p class="lead text-white mb-0">Get the best prices on 2,000,000+ properties, worldwide</p>
                 </div>
-            </div> <!-- Row END -->
+            </div> 
         </div>
     
-        <!-- Search START -->
+        {{-- Search START --}}
         <div class="container mt-n8">
             <div class="row">
-                <!-- Tabs START -->
+                {{-- Tabs START --}}
                 <div class="col-11 col-lg-8 col-xl-6 mx-auto">
                     <ul class="nav nav-tabs nav-bottom-line nav-justified nav-responsive bg-mode rounded-top z-index-9 position-relative pt-2 pb-0 px-4">
                         <li class="nav-item"> 
@@ -36,24 +33,24 @@
                         </li>
                     </ul>
                 </div>
-                <!-- Tabs END -->
+                {{-- Tabs END --}}
     
-                <!-- Tab content START -->
+                {{-- Tab content START --}}
                 <div class="col-12">
                     <div class="tab-content" id="nav-tabContent">
                         
-                        <!-- Tab content item START -->
+                        {{-- Tab content item START --}}
                         <div class="tab-pane fade show active" id="tab-1-1">
                             <form class="card shadow p-0">
-                                <!-- Card header -->
+                                {{-- Card header --}}
                                 <div class="card-header p-4">
                                     <h5 class="mb-0"><i class="fa-solid fa-hotel fa-fw me-2"></i>Hotel Booking</h5>
                                 </div>
     
-                                <!-- Card body -->
+                                {{-- Card body --}}
                                 <div class="card-body p-4 pt-0">
                                     <div class="row g-4">
-                                        <!-- Location -->
+                                        {{-- Location --}}
                                         <div class="col-12">
                                             <div class="form-icon-input form-size-lg form-fs-lg">
                                                 <select class="form-select js-choice" data-search-enabled="true">
@@ -66,15 +63,15 @@
                                             </div>
                                         </div>
                                         
-                                        <!-- Guest -->
+                                        {{-- Guest --}}
                                         <div class="col-lg-4">
                                             <div class="form-icon-input form-fs-lg">
                                                 <div class="dropdown guest-selector me-2">
                                                     <input type="text" class="form-guest-selector form-control form-control-lg selection-result" placeholder="Select occupant" data-bs-auto-close="outside" data-bs-toggle="dropdown">
                                                 
-                                                    <!-- dropdown items -->
+                                                    {{-- dropdown items --}}
                                                     <ul class="dropdown-menu guest-selector-dropdown">
-                                                        <!-- Adult -->
+                                                        {{-- Adult --}}
                                                         <li class="d-flex justify-content-between">
                                                             <div>
                                                                 <h6 class="mb-0">Adults</h6>
@@ -88,10 +85,9 @@
                                                             </div>
                                                         </li>
             
-                                                        <!-- Divider -->
                                                         <li class="dropdown-divider"></li>
             
-                                                        <!-- Child -->
+                                                        {{-- Child --}}
                                                         <li class="d-flex justify-content-between">
                                                             <div>
                                                                 <h6 class="mb-0">Child</h6>
@@ -105,10 +101,9 @@
                                                             </div>
                                                         </li>
             
-                                                        <!-- Divider -->
                                                         <li class="dropdown-divider"></li>
             
-                                                        <!-- Rooms -->
+                                                        {{-- Rooms --}}
                                                         <li class="d-flex justify-content-between">
                                                             <div>
                                                                 <h6 class="mb-0">Rooms</h6>
@@ -127,7 +122,7 @@
                                             </div>
                                         </div>
     
-                                        <!-- Date -->
+                                        {{-- Date --}}
                                         <div class="col-lg-4">
                                             <div class="form-icon-input form-fs-lg">
                                                 <input type="text" class="form-control form-control-lg flatpickr" data-date-format="d/m/y" placeholder="Select check-in date">
@@ -135,7 +130,7 @@
                                             </div>
                                         </div>
     
-                                        <!-- Date -->
+                                        {{-- Date --}}
                                         <div class="col-lg-4">
                                             <div class="form-icon-input form-fs-lg">
                                                 <input type="text" class="form-control form-control-lg flatpickr" data-date-format="d/m/y" placeholder="Select check-out date">
@@ -143,28 +138,28 @@
                                             </div>
                                         </div>
     
-                                    </div> <!-- Row END -->
+                                    </div> 
     
-                                    <!-- Button -->
+                                    {{-- Button --}}
                                     <div class="text-center pt-0">
                                         <a class="btn btn-lg btn-primary mb-n7" href="#">Search Hotel <i class="bi bi-arrow-right ps-3"></i></a>
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        <!-- Tab content item END -->
+                        {{-- Tab content item END --}}
     
-                        <!-- Tab content item START -->
+                        {{-- Tab content item START --}}
                         <div class="tab-pane fade" id="tab-1-2">
                             <form class="card shadow p-0">
-                                <!-- Card header -->
+                                {{-- Card header --}}
                                 <div class="card-header p-4">
                                     <div class="row g-4 align-items-center">
-                                        <!-- Title -->
+                                        {{-- Title --}}
                                         <div class="col-lg-4 col-xl-6">
                                             <h5 class="mb-0"><i class="fa-solid fa-plane fa-fw me-2"></i>Flight Booking</h5>
                                         </div>
-                                        <!-- Radio tab -->
+                                        {{-- Radio tab --}}
                                         <div class="col-md-6 col-lg-4 col-xl-3 ms-auto">
                                             <div class="nav nav-pills" id="pills-tab" role="tablist">
                                                 <div class="form-check form-check-inline active" id="flight-one-way-tab" data-bs-toggle="pill" data-bs-target="#flight-one-way" role="tab" aria-controls="flight-one-way" aria-selected="true">
@@ -177,7 +172,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- Select -->
+                                        {{-- Select --}}
                                         <div class="col-md-6 col-lg-4 col-xl-3 ms-auto">
                                             <div class="form-control-bg-light border rounded form-fs-md">
                                                 <select class="form-select js-choice" aria-label=".form-select-sm">
@@ -192,14 +187,14 @@
                                     </div>
                                 </div>
     
-                                <!-- Card body -->
+                                {{-- Card body --}}
                                 <div class="card-body p-4 pt-0">
-                                    <!-- Tab content START -->
+                                    {{-- Tab content START --}}
                                     <div class="tab-content" id="pills-tabContent">
-                                        <!-- One way tab START -->
+                                        {{-- One way tab START --}}
                                         <div class="tab-pane fade show active" id="flight-one-way" role="tabpanel" aria-labelledby="flight-one-way-tab">
                                             <div class="row g-4">
-                                                <!-- From -->
+                                                {{-- From --}}
                                                 <div class="col-md-6 position-relative">
                                                     <div class="form-icon-input form-size-lg form-fs-lg">
                                                         <select class="form-select js-choice" data-search-enabled="true">
@@ -211,13 +206,13 @@
                                                         <span class="form-icon"><i class="bi bi-geo-alt fs-5"></i></span>
                                                     </div>
     
-                                                    <!-- Auto fill button -->
+                                                    {{-- Auto fill button --}}
                                                     <div class="btn-flip-icon z-index-9">
                                                         <button class="btn btn-dark shadow btn-round mb-0"><i class="fa-solid fa-right-left"></i></button>
                                                     </div>
                                                 </div>
     
-                                                <!-- To -->
+                                                {{-- To --}}
                                                 <div class="col-md-6">
                                                     <div class="form-icon-input form-size-lg form-fs-lg">
                                                         <select class="form-select js-choice" data-search-enabled="true">
@@ -230,7 +225,7 @@
                                                     </div>
                                                 </div>
     
-                                                <!-- Date -->
+                                                {{-- Date --}}
                                                 <div class="col-md-6">
                                                     <div class="form-icon-input form-fs-lg">
                                                         <input type="text" class="form-control form-control-lg flatpickr" data-date-format="d/M/Y"  placeholder="Select check-in date">
@@ -238,7 +233,7 @@
                                                     </div>
                                                 </div>
     
-                                                <!-- Guest -->
+                                                {{-- Guest --}}
                                                 <div class="col-md-6">
                                                     <div class="form-icon-input form-fs-lg">
                                                         <input type="text" class="form-control form-control-lg" placeholder="Select occupant">
@@ -247,18 +242,18 @@
                                                 </div>
                                             </div>
     
-                                            <!-- Button -->
+                                            {{-- Button --}}
                                             <div class="text-center pt-0">
                                                 <a class="btn btn-lg btn-primary mb-n7" href="#">Search Flight <i class="bi bi-arrow-right ps-3"></i></a>
                                             </div>
                                         </div>
-                                        <!-- One way trip END -->
+                                        {{-- One way trip END --}}
     
                                         <!-- Round way tab START -->
                                         <div class="tab-pane fade" id="flight-round-way" role="tabpanel" aria-labelledby="flight-round-way-tab">
-                                            <!-- One way trip START -->
+                                            {{-- One way trip START --}}
                                             <div class="row g-4">
-                                                <!-- From -->
+                                                {{-- From --}}
                                                 <div class="col-md-6 position-relative">
                                                     <div class="form-icon-input form-size-lg form-fs-lg">
                                                         <select class="form-select js-choice" data-search-enabled="true">
@@ -270,13 +265,13 @@
                                                         <span class="form-icon"><i class="bi bi-geo-alt fs-5"></i></span>
                                                     </div>
     
-                                                    <!-- Auto fill button -->
+                                                    {{-- Auto fill button --}}
                                                     <div class="btn-flip-icon z-index-9">
                                                         <button class="btn btn-dark shadow btn-round mb-0"><i class="fa-solid fa-right-left"></i></button>
                                                     </div>
                                                 </div>
     
-                                                <!-- To -->
+                                                {{-- To --}}
                                                 <div class="col-md-6">
                                                     <div class="form-icon-input form-size-lg form-fs-lg">
                                                         <select class="form-select js-choice" data-search-enabled="true">
@@ -289,7 +284,7 @@
                                                     </div>
                                                 </div>
     
-                                                <!-- Date -->
+                                                {{-- Date --}}
                                                 <div class="col-md-4">
                                                     <div class="form-icon-input form-fs-lg">
                                                         <input type="text" class="form-control form-control-lg flatpickr" data-date-format="d/M/Y" placeholder="Select check-in date">
@@ -297,7 +292,7 @@
                                                     </div>
                                                 </div>
     
-                                                <!-- Date -->
+                                                {{-- Date --}}
                                                 <div class="col-md-4">
                                                     <div class="form-icon-input form-fs-lg">
                                                         <input type="text" class="form-control form-control-lg flatpickr" data-date-format="d/M/Y" placeholder="Select check-out date">
@@ -305,7 +300,7 @@
                                                     </div>
                                                 </div>
     
-                                                <!-- Guest -->
+                                                {{-- Guest --}}
                                                 <div class="col-md-4">
                                                     <div class="form-icon-input form-fs-lg">
                                                         <input type="text" class="form-control form-control-lg" placeholder="Select occupant">
@@ -313,32 +308,32 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- Button -->
+                                            {{-- Button --}}
                                             <div class="col-12 text-center pt-0">
                                                 <a class="btn btn-lg btn-primary mb-n7" href="#">Search Flight <i class="bi bi-arrow-right ps-3"></i></a>
                                             </div>
-                                            <!-- One way trip END -->
+                                            {{-- One way trip END --}}
                                         </div>
-                                        <!-- Round way tab END -->
+                                        {{-- Round way tab END --}}
                                     </div>
-                                    <!-- Tab content END -->
+                                    {{-- Tab content END --}}
                                 </div>	
                             </form>
                         </div>
-                        <!-- Tab content item END -->
+                        {{-- Tab content item END --}}
     
-                        <!-- Tab content item START -->
+                        {{-- Tab content item START --}}
                         <div class="tab-pane fade" id="tab-1-3">
                             <form class="card shadow p-0">
-                                <!-- Card header -->
+                                {{-- Card header --}}
                                 <div class="card-header p-4">
                                     <h5 class="mb-0"><i class="fa-solid fa-globe-americas fa-fw me-2"></i>Tour Booking</h5>
                                 </div>
     
-                                <!-- Card body -->
+                                {{-- Card body --}}
                                 <div class="card-body p-4 pt-0">
                                     <div class="row g-4">
-                                        <!-- Location -->
+                                        {{-- Location --}}
                                         <div class="col-lg-4">
                                             <div class="form-icon-input form-size-lg form-fs-lg">
                                                 <select class="form-select js-choice" data-search-enabled="true">
@@ -351,7 +346,7 @@
                                             </div>
                                         </div>
     
-                                        <!-- Date -->
+                                        {{-- Date --}}
                                         <div class="col-lg-4">
                                             <div class="form-icon-input form-fs-lg">
                                                 <input type="text" class="form-control form-control-lg flatpickr" data-date-format="d/M/Y" placeholder="Select date">
@@ -359,7 +354,7 @@
                                             </div>
                                         </div>
     
-                                        <!-- Guest -->
+                                        {{-- Guest --}}
                                         <div class="col-lg-4">
                                             <div class="form-icon-input form-size-lg form-fs-lg">
                                                 <select class="form-select js-choice" data-search-enabled="true">
@@ -372,26 +367,26 @@
                                                 <span class="form-icon"><i class="fa-solid fa-person-skating fs-5"></i></span>
                                             </div>
                                         </div>
-                                    </div> <!-- Row END -->
+                                    </div>
     
-                                    <!-- Button -->
+                                    {{-- Button --}}
                                     <div class="text-center pt-0">
                                         <a class="btn btn-lg btn-primary mb-n7" href="#">Search Tour <i class="bi bi-arrow-right ps-3"></i></a>
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        <!-- Tab content item END -->
+                        {{-- Tab content item END --}}
     
-                        <!-- Tab content item START -->
+                        {{--  Tab content item START --}}
                         <div class="tab-pane fade" id="tab-1-4">
                             <form class="card shadow p-0">
-                                <!-- Card header -->
+                                {{-- Card header --}}
                                 <div class="card-header d-sm-flex justify-content-between align-items-center p-4">
-                                    <!-- Title -->
+                                    {{-- Title --}}
                                     <h5 class="mb-3 mb-sm-0"><i class="fa-solid fa-car fa-fw me-2"></i>Cab Booking</h5>
     
-                                    <!-- Tabs -->
+                                    {{-- Tabs --}}
                                     <ul class="nav nav-pills nav-pills-dark" id="pills-tab-2" role="tablist">
                                         <li class="nav-item" role="presentation">
                                             <button class="nav-link mb-0 rounded-start rounded-0 active" id="pills-one-way-2-tab" data-bs-toggle="pill" data-bs-target="#pills-one-way-2" type="button" role="tab" aria-selected="true">One Way</button>
@@ -402,14 +397,14 @@
                                     </ul>
                                 </div>
     
-                                <!-- Card body -->
+                                {{-- Card body --}}
                                 <div class="card-body p-4 pt-0">
-                                    <!-- Tab content START -->
+                                    {{--  Tab content START --}}
                                     <div class="tab-content" id="pills-tabContent3">
-                                        <!-- One way tab START -->
+                                        {{--  One way tab START --}}
                                         <div class="tab-pane fade show active" id="pills-one-way-2" role="tabpanel" aria-labelledby="pills-one-way-2-tab">
                                             <div class="row g-4">
-                                                <!-- Pickup -->
+                                                {{-- Pickup --}}
                                                 <div class="col-md-6 position-relative">
                                                     <div class="form-icon-input form-size-lg form-fs-lg">
                                                         <select class="form-select js-choice" data-search-enabled="true">
@@ -421,13 +416,13 @@
                                                         <span class="form-icon"><i class="bi bi-geo-alt fs-5"></i></span>
                                                     </div>
     
-                                                    <!-- Auto fill button -->
+                                                    {{-- Auto fill button --}}
                                                     <div class="btn-flip-icon z-index-9">
                                                         <button class="btn btn-white shadow btn-round mb-0"><i class="fa-solid fa-right-left"></i></button>
                                                     </div>
                                                 </div>
     
-                                                <!-- Drop -->
+                                                {{-- Drop --}}
                                                 <div class="col-md-6">
                                                     <div class="form-icon-input form-size-lg form-fs-lg">
                                                         <select class="form-select js-choice" data-search-enabled="true">
@@ -440,7 +435,7 @@
                                                     </div>
                                                 </div>
     
-                                                <!-- Pickup date -->
+                                                {{-- Pickup date --}}
                                                 <div class="col-md-6">
                                                     <div class="form-icon-input form-fs-lg">
                                                         <input type="text" class="form-control form-control-lg flatpickr" data-date-format="d/M/Y" placeholder="Select pickup date">
@@ -448,25 +443,25 @@
                                                     </div>
                                                 </div>
     
-                                                <!-- Pickup time -->
+                                                {{-- Pickup time --}}
                                                 <div class="col-md-6">
                                                     <div class="form-icon-input form-fs-lg">
                                                         <input type="text" class="form-control form-control-lg flatpickr" placeholder="Select pickup time" data-noCalendar="true" data-enableTime="true">
                                                         <span class="form-icon"><i class="bi bi-calendar fs-5"></i></span>
                                                     </div>
                                                 </div>
-                                            </div> <!-- Row END -->
-                                            <!-- Button -->
+                                            </div> 
+                                            {{-- Button --}}
                                             <div class="text-center pt-0">
                                                 <a class="btn btn-lg btn-primary mb-n7" href="#">Search Cabs <i class="bi bi-arrow-right ps-3"></i></a>
                                             </div>
                                         </div>
-                                        <!-- One way tab END -->
+                                        {{-- One way tab END --}}
     
-                                        <!-- Round way tab START -->
+                                        {{-- Round way tab START --}}
                                         <div class="tab-pane fade" id="pills-round-way-2" role="tabpanel" aria-labelledby="pills-round-way-2-tab">
                                             <div class="row g-4">
-                                                <!-- Pickup -->
+                                                {{-- Pickup --}}
                                                 <div class="col-md-6 position-relative">
                                                     <div class="form-icon-input form-size-lg form-fs-lg">
                                                         <select class="form-select js-choice" data-search-enabled="true">
@@ -478,13 +473,13 @@
                                                         <span class="form-icon"><i class="bi bi-geo-alt fs-5"></i></span>
                                                     </div>
     
-                                                    <!-- Auto fill button -->
+                                                    {{-- Auto fill button --}}
                                                     <div class="btn-flip-icon z-index-9">
                                                         <button class="btn btn-white shadow btn-round mb-0"><i class="fa-solid fa-right-left"></i></button>
                                                     </div>
                                                 </div>
     
-                                                <!-- Drop -->
+                                                {{-- Drop --}}
                                                 <div class="col-md-6">
                                                     <div class="form-icon-input form-size-lg form-fs-lg">
                                                         <select class="form-select js-choice" data-search-enabled="true">
@@ -497,7 +492,7 @@
                                                     </div>
                                                 </div>
     
-                                                <!-- Pickup date -->
+                                                {{-- Pickup date --}}
                                                 <div class="col-md-6 col-lg-3">
                                                     <div class="form-icon-input form-fs-lg">
                                                         <input type="text" class="form-control form-control-lg flatpickr" data-date-format="d/M/Y" placeholder="Select pickup date">
@@ -505,7 +500,7 @@
                                                     </div>
                                                 </div>
     
-                                                <!-- Pickup time -->
+                                                {{-- Pickup time --}}
                                                 <div class="col-md-6 col-lg-3">
                                                     <div class="form-icon-input form-fs-lg">
                                                         <input type="text" class="form-control form-control-lg flatpickr" placeholder="Select pickup time" data-noCalendar="true" data-enableTime="true">
@@ -513,7 +508,7 @@
                                                     </div>
                                                 </div>
     
-                                                <!-- Drop date -->
+                                                {{-- Drop date --}}
                                                 <div class="col-md-6 col-lg-3">
                                                     <div class="form-icon-input form-fs-lg">
                                                         <input type="text" class="form-control form-control-lg flatpickr" data-date-format="d/M/Y" placeholder="Select return date">
@@ -521,38 +516,35 @@
                                                     </div>
                                                 </div>
     
-                                                <!-- Drop time -->
+                                                {{-- Drop time --}}
                                                 <div class="col-md-6 col-lg-3">
                                                     <div class="form-icon-input form-fs-lg">
                                                         <input type="text" class="form-control form-control-lg flatpickr" placeholder="Select return time" data-noCalendar="true" data-enableTime="true">
                                                         <span class="form-icon"><i class="bi bi-calendar fs-5"></i></span>
                                                     </div>
                                                 </div>
-                                            </div> <!-- Row END -->
-                                            <!-- Button -->
+                                            </div>
+                                            {{-- Button --}}
                                             <div class="text-center pt-0">
                                                 <a class="btn btn-lg btn-primary mb-n7" href="#">Search cabs <i class="bi bi-arrow-right ps-3"></i></a>
                                             </div>
                                         </div>
-                                        <!-- Round way tab END -->
+                                        {{-- Round way tab END --}}
                                     </div>		
                                 </div>
                             </form>
                         </div>
-                        <!-- Tab content item END -->
+                        {{-- Tab content item END --}}
     
                     </div> 
                 </div>
-                <!-- Tab content END -->
+                {{-- Tab content END --}}
             </div>
         </div>
-        <!-- Search END -->
+        {{-- Search END --}}
     </section>
-    <!-- =======================
-    Main banner START -->
     
-    <!-- =======================
-    Category START -->
+    {{-- Category START  --}}
     <section>
         <div class="container">
             <div class="row g-4">
@@ -668,9 +660,6 @@
             </div>
         </div>
     </section>
-    <!-- =======================
-    Category END -->
-    
-    </main>
-    <!-- **************** MAIN CONTENT END **************** -->
+    {{-- Category END --}}
+</main>
 @endsection
