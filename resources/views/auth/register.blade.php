@@ -23,7 +23,7 @@
                                     </a>
                                     {{-- Title --}}
                                     <h1 class="mb-2 h3">Create new account</h1>
-                                    <p class="mb-0">Already a member?<a href="sign-in.html"> Log in</a></p>
+                                    <p class="mb-0">Already a member?<a href="{{ route('login') }}"> Log in</a></p>
             
                                     {{-- Form START --}}
                                     <form class="mt-4 text-start">

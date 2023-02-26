@@ -23,7 +23,7 @@
                                         <img class="h-50px mb-4" src="{{ asset('images/logo-icon.svg') }}" alt="logo">
                                     </a> 
                                     <h1 class="mb-2 h3">Welcome back</h1>
-                                    <p class="mb-0">New here?<a href="sign-up.html"> Create an account</a></p>
+                                    <p class="mb-0">New here?<a href="{{ route('register') }}"> Create an account</a></p>
             
                                     <form class="mt-4 text-start" method="POST" action="{{ route('login') }}">
                                         @csrf
