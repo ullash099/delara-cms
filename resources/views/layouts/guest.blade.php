@@ -24,10 +24,9 @@
             @livewire('topbar')
         </div>
 
-        <div class="font-sans text-gray-900 antialiased">
-            @yield('content')
-        </div>
-        <!-- Bootstrap JS -->
+        @yield('content')
+        
+        @livewire('footer')
     <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}} "></script>
 
     <!-- ThemeFunctions -->
