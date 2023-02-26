@@ -20,10 +20,17 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
     </head>
     <body class="has-navbar-mobile">
-        @livewire('topbar')
+        <div class="mb-2">
+            @livewire('topbar')
+        </div>
 
         <div class="font-sans text-gray-900 antialiased">
             @yield('content')
         </div>
+        <!-- Bootstrap JS -->
+    <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}} "></script>
+
+    <!-- ThemeFunctions -->
+    <script src=" {{ asset('assets/js/functions.js')}} "></script>
     </body>
 </html>

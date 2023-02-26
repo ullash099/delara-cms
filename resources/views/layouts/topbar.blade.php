@@ -1,11 +1,11 @@
 <?php $user = Auth::user();?>
 {{-- Header START --}}
-<header class="navbar-light header-sticky">
+<header class="navbar-light header-sticky-on ">
 	{{-- Logo Nav START --}}
 	<nav class="navbar navbar-expand-xl">
 		<div class="container">
 			{{-- Logo START --}}
-			<a class="navbar-brand" href="index.html">
+			<a class="navbar-brand" href="{{ route('home') }}">
 				<img class="light-mode-item navbar-brand-item" src="{{ asset('images/logo.svg') }}" alt="logo">
 				<img class="dark-mode-item navbar-brand-item" src="{{ asset('images/logo-light.svg') }}" alt="logo">
 			</a>
