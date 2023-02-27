@@ -29,9 +29,10 @@
 			{{-- Nav category menu START --}}
 			<div class="navbar-collapse collapse text-start" id="navbarCategoryCollapse">
 				<ul class="navbar-nav navbar-nav-scroll nav-pills-primary-soft text-center mx-auto p-2 p-xl-0">
-					<li class="nav-item"> <a class="nav-link active" href="index.html"><i class="fa-solid fa-home me-2"></i>Home</a>	</li>
+					{{--  Nav item Hone --}}
+					<li class="nav-item"> <a class="nav-link active" href="{{ route('home') }}"><i class="fa-solid fa-home me-2"></i>Home</a>	</li>
 					{{--  Nav item Hotel --}}
-					<li class="nav-item"> <a class="nav-link" href="{{route('home')}}"><i class="fa-solid fa-hotel me-2"></i>Hotel</a>	</li>
+					<li class="nav-item"> <a class="nav-link" href="#"><i class="fa-solid fa-hotel me-2"></i>Hotel</a>	</li>
 
 					{{-- Nav item Flight --}}
 					<li class="nav-item"> <a class="nav-link" href="index-flight.html"><i class="fa-solid fa-plane me-2"></i>Flight</a>	</li>
@@ -168,7 +169,7 @@
 				</li>
 				{{-- Sign In button --}}
 				<li class="nav-item ms-2 d-none d-sm-block">
-					<a href="#" class="btn btn-sm btn-primary-soft mb-0"><i class="fa-solid fa-right-to-bracket me-2"></i>Sign Up</a>
+					<a href="{{ route('register') }}" class="btn btn-sm btn-primary-soft mb-0"><i class="fa-solid fa-right-to-bracket me-2"></i>Sign Up</a>
 				</li>
 			</ul>
 			{{-- Navbar right side END --}}
